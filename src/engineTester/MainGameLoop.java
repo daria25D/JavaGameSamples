@@ -1,5 +1,6 @@
 package engineTester;
 
+import entities.Camera;
 import entities.Entity;
 import models.TexturedModel;
 import org.lwjgl.LWJGLException;
@@ -43,11 +44,15 @@ public class MainGameLoop {
         TexturedModel staticModel = new TexturedModel(model, texture);
         Entity entity = new Entity(staticModel, new Vector3f(0, 0, 0), 0, 0, 0, 1);
 
+        Camera camera = new Camera();
+
         while(!Display.isCloseRequested()) {
-            entity.increasePosition(0, 0, -0.002f);
+            entity.increasePosition(0, 0, -0.02f);
 //            entity.increaseRotation(2, 0, 0);
+            camera.move();
             renderer.prepare();
             shader.start();
+            shader.loadViewMatrix(camera);
             renderer.render(entity, shader);
             shader.stop();
             DisplayManager.updateDisplay();
