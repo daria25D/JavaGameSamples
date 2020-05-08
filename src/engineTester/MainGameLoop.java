@@ -19,8 +19,8 @@ public class MainGameLoop {
         DisplayManager.createDisplay();
 
         Loader loader = new Loader();
-        Renderer renderer = new Renderer();
         StaticShader shader = new StaticShader();
+        Renderer renderer = new Renderer(shader);
 
         float[] vertices = {
                 -0.5f, 0.5f, 0f,

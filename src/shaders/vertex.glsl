@@ -5,8 +5,9 @@ in vec2 uv;
 out vec2 texCoords;
 
 uniform mat4 transformMatrix;
+uniform mat4 projectionMatrix;
 
 void main() {
-    gl_Position = transformMatrix * vec4(position, 1.0);
+    gl_Position = projectionMatrix * transformMatrix * vec4(position, 1.0);
     texCoords = uv;
 }
